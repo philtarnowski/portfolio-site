@@ -1,0 +1,33 @@
+---
+// The 404 page body: the site's bib-and-calendar logo, blown up, wearing 404 as its race number.
+import Actions from './Actions.astro'
+---
+<section style="max-width: 1200px; margin: 0 auto; padding: 96px 32px 120px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 64px">
+  <div style="flex: 1 1 380px; min-width: 0; max-width: 560px">
+    <p style="margin: 0 0 16px; font-size: 16px; font-weight: 600; color: #4AB8D4">Page Not Found</p>
+    <h1 style="margin: 0 0 20px; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(40px, 4.4vw, 56px); line-height: 0.95">Wrong Turn on the Course</h1>
+    <p style="margin: 0 0 36px; font-size: 18px; line-height: 1.6; color: #D8D8D8; max-width: 44ch">This page doesn't exist or may have moved. Use the links below to get back to the site.</p>
+    <Actions />
+  </div>
+
+  <div style="flex: 0 1 420px; min-width: 0; display: flex; justify-content: center">
+    <div aria-hidden="true" style="position: relative; width: 100%; max-width: 420px; aspect-ratio: 420 / 380; transform: rotate(-4deg)">
+      <!-- calendar rings -->
+      <span style="position: absolute; left: 22%; top: 0; width: 7%; height: 18%; border-radius: 999px; background: #EDEAE3"></span>
+      <span style="position: absolute; right: 22%; top: 0; width: 7%; height: 18%; border-radius: 999px; background: #EDEAE3"></span>
+      <!-- bib -->
+      <div style="position: absolute; left: 0; right: 0; bottom: 0; top: 9%; border-radius: 28px; background: #EDEAE3; overflow: hidden; display: flex; flex-direction: column">
+        <div style="background: #4AB8D4; padding: 18px 0 14px; text-align: center; font-size: clamp(11px, 2.6vw, 14px); font-weight: 600; letter-spacing: 0.22em; color: #0E0E10">PHILTARNOWSKI.COM</div>
+        <div style="flex: 1; display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(112px, 30vw, 184px); line-height: 1; color: #1C1C1E; letter-spacing: -0.01em">404</div>
+        <div style="display: flex; justify-content: space-between; padding: 0 44px 22px; font-size: clamp(10px, 2.4vw, 13px); font-weight: 600; letter-spacing: 0.16em; color: #68675F">
+          <span>COURSE: NOT FOUND</span><span>WAVE 4</span>
+        </div>
+        <!-- safety-pin holes -->
+        <span style="position: absolute; left: 18px; top: 58px; width: 12px; height: 12px; border-radius: 999px; background: #1C1C1E"></span>
+        <span style="position: absolute; right: 18px; top: 58px; width: 12px; height: 12px; border-radius: 999px; background: #1C1C1E"></span>
+        <span style="position: absolute; left: 18px; bottom: 18px; width: 12px; height: 12px; border-radius: 999px; background: #1C1C1E"></span>
+        <span style="position: absolute; right: 18px; bottom: 18px; width: 12px; height: 12px; border-radius: 999px; background: #1C1C1E"></span>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,10 @@
+---
+// The way back into the site, shared by every 404 design.
+import { caseStudies } from '../../data/caseStudies'
+---
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+  <a href="/" style="display: inline-block; background: #4AB8D4; color: #0E0E10; font-weight: 600; font-size: 16px; padding: 14px 24px; border-radius: 12px; text-decoration: none">Back to Home</a>
+  {caseStudies.map((c) => (
+    <a href={c.href} style="display: inline-block; border: 2px solid #33363D; color: #FFFFFF; font-weight: 600; font-size: 16px; padding: 12px 22px; border-radius: 12px; text-decoration: none">{c.name} Case Study</a>
+  ))}
+</div>

@@ -1,0 +1,117 @@
+/* Site-wide basics. Page content uses inline styles carried over from the design canvas;
+   shared pieces (nav, footer, dropdown) are styled here. */
+
+:root {
+  --charcoal: #1c1c1e;
+  --page: #0e0e10;
+  --card: #26282e;
+  --line: #33363d;
+  --glacier: #4ab8d4;
+  --midnight: #102a38;
+  --cream: #edeae3;
+  --text-soft: #c0c0c0;
+  --text-muted: #a0a0a0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: #ffffff;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--glacier);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #7fd0e4;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Case Studies dropdown: opens on hover, on keyboard focus, and on click (for touch). */
+.cs-dd {
+  position: relative;
+}
+
+.cs-dd__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 0;
+  padding: 8px 4px;
+  color: #d8d8d8;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.cs-dd__button:hover {
+  color: #ffffff;
+}
+
+.cs-dd__menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 20;
+  padding-top: 10px;
+}
+
+.cs-dd:hover .cs-dd__menu,
+.cs-dd:focus-within .cs-dd__menu,
+.cs-dd.is-open .cs-dd__menu {
+  display: block;
+}
+
+.cs-dd__panel {
+  width: 300px;
+  max-width: calc(100vw - 32px);
+  background: var(--charcoal);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+.cs-dd__item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  color: #ffffff;
+  background: var(--card);
+}
+
+.cs-dd__item:hover {
+  color: #ffffff;
+  background: #2f323a;
+}
+
+.cs-dd__item span {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
