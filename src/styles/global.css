@@ -47,6 +47,7 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  min-height: 44px;
   background: none;
   border: 0;
   padding: 8px 4px;
@@ -55,6 +56,7 @@ img {
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .cs-dd__button:hover {
@@ -70,15 +72,26 @@ img {
   padding-top: 10px;
 }
 
-.cs-dd:hover .cs-dd__menu,
-.cs-dd:focus-within .cs-dd__menu,
+/* Tap or click toggles .is-open everywhere. Hover and keyboard focus only open it
+   on devices with a real pointer: on touch screens a tap also fires hover and focus,
+   which left the menu stuck open after a second tap. */
 .cs-dd.is-open .cs-dd__menu {
+  display: block;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cs-dd:hover .cs-dd__menu {
+    display: block;
+  }
+}
+
+.cs-dd:has(:focus-visible) .cs-dd__menu {
   display: block;
 }
 
 .cs-dd__panel {
   width: 300px;
-  max-width: calc(100vw - 32px);
+  max-width: calc(100vw - 64px);
   background: var(--charcoal);
   border: 1px solid var(--line);
   border-radius: 14px;
@@ -108,6 +121,81 @@ img {
   font-size: 14px;
   line-height: 1.45;
   color: var(--text-soft);
+}
+
+/* At least a 44×44 tap area (Apple's touch guideline) without changing how the link looks. */
+.hit {
+  position: relative;
+}
+
+.hit::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: max(100%, 44px);
+  height: max(100%, 44px);
+  transform: translate(-50%, -50%);
+}
+
+/* Phones: stat tiles and race cards sit two per row instead of one, so they take half the scroll.
+   !important overrides the inline styles these elements carry. */
+@media (max-width: 480px) {
+  .stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .stat-grid > div {
+    padding: 16px 12px !important;
+  }
+
+  .stat-grid > div > p:nth-child(2) {
+    font-size: 14px !important;
+    overflow-wrap: anywhere;
+  }
+
+  .stat-grid > div > p:first-child {
+    font-size: 28px !important;
+  }
+
+  .logo-cell {
+    padding: 20px 14px !important;
+  }
+
+  .race-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .race-grid > div {
+    padding: 16px !important;
+  }
+
+  .race-grid > div:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .race-grid > div > span {
+    font-size: 12px !important;
+    padding: 4px 8px !important;
+  }
+
+  .race-grid > div > p:first-of-type {
+    font-size: 15px !important;
+    margin-top: 12px !important;
+  }
+
+  .race-grid > div > p:last-of-type {
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .cs-dd__menu {
+    right: auto;
+    left: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
